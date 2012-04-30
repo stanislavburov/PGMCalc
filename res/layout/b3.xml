@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/b3"
+            android:onClick="b3Click"
+            style="@style/regularbutton"
+            android:text="3" />

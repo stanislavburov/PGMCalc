@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" > 
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bln"/>
+        <include layout="@layout/bexp"/>
+        <include layout="@layout/blog"/>
+        <include layout="@layout/balog"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bxsquare"/>
+        <include layout="@layout/bxsquareroot"/>
+        <include layout="@layout/bxcube"/>
+        <include layout="@layout/bxcuberoot"/>
+    </LinearLayout>
+
+        <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bxpowy"/>
+        <include layout="@layout/bxrooty"/>
+        <include layout="@layout/bxlogy"/>
+        <include layout="@layout/bxinverse"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bfactorial"/>
+        <include layout="@layout/bpermutation"/>
+        <include layout="@layout/bcombination"/>
+        <include layout="@layout/bgamma"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bmodulus"/>
+        <include layout="@layout/bintdivide"/>
+        <include layout="@layout/bintremainder"/>
+        <include layout="@layout/broundx"/>
+    </LinearLayout>
+
+</LinearLayout>

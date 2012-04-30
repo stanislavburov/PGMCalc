@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bsin"/>
+        <include layout="@layout/bcos"/>
+        <include layout="@layout/btan"/>
+        <include layout="@layout/bchangeangle"/>
+    </LinearLayout>
+    
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/barcsin"/>
+        <include layout="@layout/barccos"/>
+        <include layout="@layout/barctan"/>
+        <include layout="@layout/bconvertangle"/>
+    </LinearLayout>
+    
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bsinh"/>
+        <include layout="@layout/bcosh"/>
+        <include layout="@layout/btanh"/>
+        <include layout="@layout/bpi"/>
+    </LinearLayout>
+    
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/barsinh"/>
+        <include layout="@layout/barcosh"/>
+        <include layout="@layout/bartanh"/>
+        <include layout="@layout/be"/>
+    </LinearLayout>
+    
+        
+</LinearLayout>

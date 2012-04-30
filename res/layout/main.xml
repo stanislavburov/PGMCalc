@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">"
+        
+        <TextView android:id="@+id/angleunit" style="@style/notificationarea" />
+        <LinearLayout android:id="@+id/memoryline" android:orientation="horizontal" style="@style/notificationarea" />
+        <TextView android:id="@+id/parentheses" style="@style/notificationarea" />
+        <TextView android:id="@+id/fix" style="@style/notificationarea" />
+        <TextView android:id="@+id/scieng" style="@style/notificationarea" />
+        <TextView android:id="@+id/pgmrun" style="@style/notificationarea" /> 
+        
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/simplescreen"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/touchabletext"
+        android:text="0."
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp"
+        android:singleLine="true"
+        android:gravity="right" />
+
+    <LinearLayout
+        android:id="@+id/managerbuttons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button style="@style/managerbutton" android:text="num" android:id="@+id/num" />
+        <Button style="@style/managerbutton" android:text="trig" android:id="@+id/trig" />
+        <Button style="@style/managerbutton" android:text="func" android:id="@+id/func" />
+        <Button style="@style/managerbutton" android:text="misc" android:id="@+id/misc" />
+        
+    </LinearLayout>
+
+    <ViewAnimator
+        android:id="@+id/operationalbuttons"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:inAnimation="@anim/move2left"
+        android:outAnimation="@anim/move2right" >
+
+        <include layout="@layout/simplenumpadlayout" />
+        <include layout="@layout/trigonometrypadlayout"/>
+        <include layout="@layout/functionpadlayout"/>
+        <include layout="@layout/miscellaneouspadlayout"/>
+        
+    </ViewAnimator>
+
+</LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" > 
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bstom"/>
+        <include layout="@layout/brclm"/>
+        <include layout="@layout/bbackspace"/>
+        <include layout="@layout/bclear"/>
+        </LinearLayout>
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bmplus"/>
+        <include layout="@layout/bswapoperands"/>
+        <include layout="@layout/bpowerof10"/>
+        <include layout="@layout/bdivide"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/b7"/>
+        <include layout="@layout/b8"/>
+        <include layout="@layout/b9"/>
+        <include layout="@layout/bmultiply"/>
+    </LinearLayout>
+
+        <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/b4"/>
+        <include layout="@layout/b5"/>
+        <include layout="@layout/b6"/>
+        <include layout="@layout/bminus"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/b1"/>
+        <include layout="@layout/b2"/>
+        <include layout="@layout/b3"/>
+        <include layout="@layout/bplus"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/b0"/>
+        <include layout="@layout/bdot"/>
+        <include layout="@layout/bchangesign"/>
+        <include layout="@layout/bproceed"/>
+    </LinearLayout>
+
+</LinearLayout>

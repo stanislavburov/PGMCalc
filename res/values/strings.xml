@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PGMCalc</string>
+    <string name="help">Help</string>
+    <string name="help_message">
+Thank you for downloading PGMCalc. PGMCalc is a programmable scientific calculator.\n
+Top line is an information line. It contains information about angular units, occupied memory cells, opened parentheses and calculator state.\n
+Second line contains input and output data. When result is not a number or too big (infinite) it contains error message. In such state press on error message will rise more detailed explanation of an error.\n
+Top buttons are manager buttons - they change content of the area below. Most of other buttons have self explanatory text on them.\n
+PGM button turns calculator to programmable mode. In this mode all presses on buttons will be recorded and stored into a program. Program is a sequence of button presses. To exit from programmable mode user should again press on PGM button. To run recorded program user should press RUN button. RUN button is inactive in programmable mode.\n
+HALT and [x] buttons are active only in programmable mode. HALT button inserts halt into a program so the user of a program will see the intermediate result on the screen. To continue execution of a program after HALT user should press CONT button (it is located on the place of = button).\n
+The [x] button inserts a variable into a program. The number inserted after press on [x] button will be changed to the number which the user will insert during program execution. When user should input a variable the = button will change to [N] button where N is count number of a variable. To enter a variable user should press [N] button.\n
+STO button stores value to memory. RCL button serves to recall saved value from memory.\n
+        </string>
+
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/bcosh"
+            android:onClick="bCoshClick"
+            style="@style/regularimagebutton"
+            android:src="@drawable/cosh"
+            android:text="cosh" />

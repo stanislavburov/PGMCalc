@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/bcombination"
+            android:onClick="bCombinationClick"
+            style="@style/regularimagebutton"
+            android:src="@drawable/combination"
+            android:text="nCk" />

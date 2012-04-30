@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/b9"
+            android:onClick="b9Click"
+            style="@style/regularbutton"
+            android:text="9" />

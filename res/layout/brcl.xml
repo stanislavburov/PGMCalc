@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/brcl"
+            android:onClick="bRCLClick"
+            style="@style/regularbutton"
+            android:src="@drawable/rcl"
+            android:text="RCL" />
+

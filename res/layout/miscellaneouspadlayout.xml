@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" > 
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bpgm"/>
+        <include layout="@layout/brun"/>
+        <include layout="@layout/bhalt"/>
+        <include layout="@layout/bvariable"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bsto"/>
+        <include layout="@layout/brcl"/>
+        <include layout="@layout/bfix"/>
+        <include layout="@layout/bscieng"/>
+    </LinearLayout>
+    
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bparentheseopen"/>
+        <include layout="@layout/bparentheseclose"/>
+        <include layout="@layout/bpercent"/>
+        <include layout="@layout/brand"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bpi"/>
+        <include layout="@layout/be"/>
+        <include layout="@layout/bh"/>
+        <include layout="@layout/bk"/>
+    </LinearLayout>
+    
+    <LinearLayout style="@style/regularbuttonsrow">
+        <include layout="@layout/bc"/>
+        <include layout="@layout/belementarycharge"/>
+        <include layout="@layout/bvacuumpermettivity"/>
+        <include layout="@layout/bavogadroconstant"/>
+    </LinearLayout>    
+</LinearLayout>

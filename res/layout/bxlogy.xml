@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/bxlogy"
+            android:onClick="bXlogyClick"
+            style="@style/regularimagebutton"
+            android:src="@drawable/xlogy"
+            android:text="xlogy" />

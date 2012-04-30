@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/bh"
+            android:onClick="bhClick"
+            style="@style/regularbutton"
+            android:src="@drawable/planckconstant"
+            android:text="h" />

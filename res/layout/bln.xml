@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/bln"
+            android:onClick="bLnClick"
+            style="@style/regularimagebutton"
+            android:src="@drawable/ln"
+            android:text="ln" />

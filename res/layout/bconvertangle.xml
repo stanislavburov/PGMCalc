@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/bconvertangle"
+            android:onClick="bConvertAngleClick"
+            style="@style/regularimagebutton"
+            android:src="@drawable/convertangle" 
+            android:text="DRG->" />
