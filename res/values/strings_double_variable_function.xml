@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="double_variable_description">Two variable function</string>
+    <string name="double_variable_intro">This sequence of buttons records two variable function. Buttons are interactive.</string>
+    <string name="double_variable_step01">@string/pgm_init</string>
+    <string name="double_variable_step02">@string/clear_description</string>
+    <string name="double_variable_step03">First variable</string>
+    <string name="double_variable_step04">@string/after_variable_description</string>
+    <string name="double_variable_step05">Natural logarithm</string>
+    <string name="double_variable_step06">Plus</string>
+    <string name="double_variable_step07">Second variable</string>
+    <string name="double_variable_step08">@string/after_variable_description</string>
+    <string name="double_variable_step09">Extract the root of an arbitrary degree</string>
+    <string name="double_variable_step10">The degree of the root</string>
+    <string name="double_variable_step11">Result</string>
+    <string name="double_variable_step12">@string/pgm_final</string>
+    <string name="double_variable_conclusion">Now you can execute program with RUN button. When program needs a variable the result button will change to [n] button and the screen will show [n] where n is serial number of a variable in a program. Also top line will indicate RUN [x].</string>
+    
+</resources>

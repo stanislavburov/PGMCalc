@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Button xmlns:android="http://schemas.android.com/apk/res/android"
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/bmultiply"
             android:onClick="bMultiplyClick"
-            style="@style/regularbutton"
-            android:text="\u00D7" />
+            style="@style/regularimagebutton"
+            android:text="\u00D7"
+            android:src="@drawable/multiply" /> 

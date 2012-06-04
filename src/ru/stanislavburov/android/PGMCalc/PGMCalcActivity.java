@@ -15,17 +15,21 @@ import ru.stanislavburov.android.PGMCalc.Operations.BinaryOperation;
 import ru.stanislavburov.android.PGMCalc.PGMEngine.PGMEngineState;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,10 +38,17 @@ import android.widget.ViewAnimator;
 
 public class PGMCalcActivity extends Activity {
 	private PGMEngine engine; // = new PGMEngine(this);
-	private TextView screen, angleUnit, parentheses, tvFIX, tvSCIENG, tvPGMRUN, proceedButton;
+	private TextView screen, angleUnit, parentheses, tvFIX, tvSCIENG, tvPGMRUN;
+	private ImageView proceedButton;
 	private ViewGroup managerButtons;
 	private ViewAnimator operationalButtons;
+	private Resources resources;
 	private static final int NUMPAD_INDEX = 0;
+	private static final int DIALOG_HOWTOPGM_ID = 0;
+	private static final int DIALOG_HELP_ID = 1;
+	private static final int DIALOG_QUADRATIC_EQUATION_ID = 2;
+	private static final int DIALOG_DOUBLE_FUNCTION_ID = 3;
+	private static final int DIALOG_DOUBLE_VARIABLE_ID = 4;
 	private int animationDuration=100;
 	private String sParentheses = new String(), engineFileName = "engine";
 	private Integer nParentheses;
@@ -51,11 +62,12 @@ public class PGMCalcActivity extends Activity {
 	private AlertDialog fixDialog = null;
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) { // TODO unit testing, option menu, help on long press, copy screen content to clipboard
+    public void onCreate(Bundle savedInstanceState) { // TODO unit testing, help on long press, copy screen content to clipboard
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        resources=getResources();
         screen = (TextView)findViewById(R.id.simplescreen);
-        screen.setOnClickListener(new View.OnClickListener() {
+        screen.setOnClickListener(new View.OnClickListener() { // TODO copy value from the screen to the system buffer
 			public void onClick(View v) {
 				String errorDescription = engine.getErrorDescription();
 				if(errorDescription!=null) {
@@ -94,7 +106,14 @@ public class PGMCalcActivity extends Activity {
 		variableButton = findViewById(R.id.bvariable);
 		haltButton = findViewById(R.id.bhalt);
 		runButton = findViewById(R.id.brun);
-		proceedButton = (TextView)findViewById(R.id.bproceed);
+		proceedButton = (ImageView)findViewById(R.id.bproceed);
+		View bRoundx = findViewById(R.id.broundx);
+		bRoundx.setOnLongClickListener(new View.OnLongClickListener() {
+			public boolean onLongClick(View v) {
+				Toast.makeText(getApplicationContext(), "!!!", Toast.LENGTH_LONG).show();
+				return true;
+			}
+		});
     }
     @Override
     public void onPause() {
@@ -107,7 +126,6 @@ public class PGMCalcActivity extends Activity {
 			Toast.makeText(this, ex.toString(), Toast.LENGTH_LONG).show();
 		} catch (IOException ex) {
 			Toast.makeText(this, ex.toString(), Toast.LENGTH_LONG).show();
-//			throw new RuntimeException(ex);
 		}
     }
     @Override
@@ -117,15 +135,10 @@ public class PGMCalcActivity extends Activity {
     		ObjectInputStream in = new ObjectInputStream(openFileInput(engineFileName));
     		engine = (PGMEngine)in.readObject();
 		} catch (FileNotFoundException e) {
-//			Toast.makeText(this, "Creating new engine", Toast.LENGTH_SHORT).show();
 			engine = new PGMEngine();
 		} catch(IOException ex) {
-//			Toast.makeText(this, ex.toString(), Toast.LENGTH_LONG).show();
-//			Toast.makeText(this, "Creating new engine", Toast.LENGTH_SHORT).show();
 			engine = new PGMEngine();
 		} catch (ClassNotFoundException ex) {
-//			Toast.makeText(this, ex.toString(), Toast.LENGTH_LONG).show();
-//			Toast.makeText(this, "Creating new engine", Toast.LENGTH_SHORT).show();
 			engine = new PGMEngine();
 		}
     	engine.setContext(this);
@@ -151,16 +164,75 @@ public class PGMCalcActivity extends Activity {
     	super.onOptionsItemSelected(item);
     	switch(item.getItemId()) {
     	case R.id.help:
-    		new AlertDialog.Builder(this)
-    		.setPositiveButton("Ok", null)
-        	.setTitle(R.string.help)
-        	.setIcon(R.drawable.blank)
-        	.setMessage(R.string.help_message)
-        	.show();
-    		break;
-    	default:
+    		showDialog(DIALOG_HELP_ID); break;
+    	case R.id.howtopgm:
+    		showDialog(DIALOG_HOWTOPGM_ID); break;
+    	default: break;
     	}
     	return true;
+    }
+    
+    @Override
+    protected Dialog onCreateDialog(int id) {
+    	Dialog dialog;
+    	AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this)
+    		.setPositiveButton("Close", null)
+        	.setIcon(R.drawable.blank);
+    	switch(id) {
+    	case DIALOG_HOWTOPGM_ID:
+    		dialogBuilder.setView(getLayoutInflater().inflate(R.layout.howtopgm_dialog_layout, null)).setTitle(R.string.howtopgm_title);
+    		break;
+    	case DIALOG_HELP_ID:
+    		dialogBuilder.setMessage(R.string.help_message).setTitle(R.string.help);
+    		break;
+    	case DIALOG_QUADRATIC_EQUATION_ID:
+    		dialogBuilder
+    			.setView(getLayoutInflater().inflate(R.layout.quadratic_equation_tutorial_layout, null))
+    			.setNeutralButton("Back", new OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						PGMCalcActivity.this.showDialog(DIALOG_HOWTOPGM_ID);
+					}
+				})
+    			.setTitle(R.string.quadratic_equation_description);
+    		break;
+    	case DIALOG_DOUBLE_VARIABLE_ID:
+    		dialogBuilder
+    			.setView(getLayoutInflater().inflate(R.layout.double_variable_tutorial_layout, null))
+    			.setNeutralButton("Back", new OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						PGMCalcActivity.this.showDialog(DIALOG_HOWTOPGM_ID);
+					}
+				})
+    			.setTitle(R.string.double_variable_description);
+    		break;
+    	case DIALOG_DOUBLE_FUNCTION_ID:
+    		dialogBuilder
+    			.setView(getLayoutInflater().inflate(R.layout.double_function_tutorial_layout, null))
+				.setNeutralButton("Back", new OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						PGMCalcActivity.this.showDialog(DIALOG_HOWTOPGM_ID);
+					}
+				})
+				.setTitle(R.string.double_function_description);
+    		break;
+    	default:
+    		break;
+    	}
+    	dialog = dialogBuilder.create();
+    	return dialog;
+    }
+    
+    public void raiseTutorial(View v) {
+    	dismissDialog(DIALOG_HOWTOPGM_ID);
+    	switch(v.getId()) {
+    	case R.id.quadratic_equation:
+    		showDialog(DIALOG_QUADRATIC_EQUATION_ID); break;
+    	case R.id.double_function:
+    		showDialog(DIALOG_DOUBLE_FUNCTION_ID); break;
+    	case R.id.double_variable:
+    		showDialog(DIALOG_DOUBLE_VARIABLE_ID); break;
+    	default: break;
+    	}
     }
     
     private void setScreen(String s, boolean setNumPad) {
@@ -181,10 +253,25 @@ public class PGMCalcActivity extends Activity {
     	variableButton.setEnabled(haltVariableState); haltButton.setEnabled(haltVariableState);
     	runButton.setEnabled(!haltVariableState);
     	switch(engine.getState()) {
-    	case REGULAR: proceedButton.setText("="); break;
-    	case HALT: proceedButton.setText("CONT"); break;
-    	case VAR: proceedButton.setText(engine.getVarString()); break;
-    	default: proceedButton.setText("=");
+    	case REGULAR: proceedButton.setImageResource(R.drawable.proceed); break;
+    	case HALT: proceedButton.setImageResource(R.drawable.cont); break;
+    	case VAR:
+    		int drawableId=R.drawable.varx;
+    		switch(engine.getVarNumber()) {
+    		case 1: drawableId=R.drawable.var1; break;
+    		case 2: drawableId=R.drawable.var2; break;
+    		case 3: drawableId=R.drawable.var3; break;
+    		case 4: drawableId=R.drawable.var4; break;
+    		case 5: drawableId=R.drawable.var5; break;
+    		case 6: drawableId=R.drawable.var6; break;
+    		case 7: drawableId=R.drawable.var7; break;
+    		case 8: drawableId=R.drawable.var8; break;
+    		case 9: drawableId=R.drawable.var9; break;
+    		default: break;    				
+    		}
+    		proceedButton.setImageResource(drawableId);
+    		break;
+    	default: proceedButton.setImageResource(R.drawable.proceed); 
     	}
     }
     private void setSCIENG() { tvSCIENG.setText(engine.getExponentType().toString()); }
@@ -375,8 +462,8 @@ public class PGMCalcActivity extends Activity {
 				}
 			});
     }
-    public void bHALTClick(View v) { setScreen(engine.add(engine.halt), true); }
-    public void bVariableClick(View v) { setScreen(engine.PGMVariable(), true); }
+    public void bHALTClick(View v) { if(engine.getState()==PGMEngineState.RECORD) setScreen(engine.add(engine.halt), true); }
+    public void bVariableClick(View v) { if(engine.getState()==PGMEngineState.RECORD) setScreen(engine.PGMVariable(), true); }
     public void bPercentClick(View v) { setScreen(engine.add(engine.percent), true); }
     public void memClearButtonClick(View v) {
     	Toast.makeText(this, "!!!", Toast.LENGTH_SHORT).show();

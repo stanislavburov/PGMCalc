@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quadratic_equation_description">Quadratic function</string>
+    <string name="quadratic_equation_intro">Here is a sequence of buttons which records given quadratic function as a program. Buttons are interactive.</string>
+    <string name="quadratic_equation_step01">@string/pgm_init</string>
+    <string name="quadratic_equation_step02">@string/clear_description</string>
+    <string name="quadratic_equation_step03">First constant of the quadratic function</string>
+    <string name="quadratic_equation_step04">Multiply</string>
+    <string name="quadratic_equation_step05">Variable</string>
+    <string name="quadratic_equation_step06">@string/after_variable_description</string>
+    <string name="quadratic_equation_step07">Save variable to memory</string>
+    <string name="quadratic_equation_step08">Raise variable to the second power</string>
+    <string name="quadratic_equation_step09">Plus</string>
+    <string name="quadratic_equation_step10">Second constant</string>
+    <string name="quadratic_equation_step11">Multiply</string>
+    <string name="quadratic_equation_step12">Recall our variable from memory</string>
+    <string name="quadratic_equation_step13">Minus</string>
+    <string name="quadratic_equation_step14">Third constant</string>
+    <string name="quadratic_equation_step15">Result</string>
+    <string name="quadratic_equation_step16">@string/pgm_final</string>
+    <string name="quadratic_equation_conclusion">Now you can execute this program with RUN button and provide it with an appropriate variable. The result button will change to [1] button when program needs a variable. Enter a number and press [1] button to put variable into program.</string>
+    
+</resources>

@@ -3,4 +3,8 @@
     <item android:id="@+id/help"
         android:title="@string/help"
         android:icon="@android:drawable/ic_menu_help" />
+    <item android:id="@+id/howtopgm"
+        android:title="@string/howtopgm"
+        android:icon="@android:drawable/ic_menu_info_details" 
+        />
 </menu>

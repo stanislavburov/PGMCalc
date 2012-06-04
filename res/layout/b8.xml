@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Button xmlns:android="http://schemas.android.com/apk/res/android"
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/b8"
             android:onClick="b8Click"
-            style="@style/regularbutton"
-            android:text="8" />
+            style="@style/regularimagebutton"
+            android:src="@drawable/num8" />

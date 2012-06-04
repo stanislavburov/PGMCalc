@@ -70,6 +70,7 @@ public class PGMEngine extends CalcEngine {
 		var = new NoArgCalcAction() {
 			private static final long serialVersionUID = 1L;
 			@Override public String perform() {
+				PGMEngine.super.parentheseOpen();
 				pgm[PGMEngine.this.programIndex].newVariable();
 				return "[" + Integer.toString(pgm[PGMEngine.this.programIndex].getVarCount()) + "]"; 
 			}
@@ -142,6 +143,7 @@ public class PGMEngine extends CalcEngine {
 	}
 	
 	public String continuePGM() {
+		if(state==PGMEngineState.VAR) parentheseClose();
 		String result=null;
 		while(pgm[programIndex].hasNext()) {
 			NoArgCalcAction action = pgm[programIndex].next(); 
@@ -185,6 +187,7 @@ public class PGMEngine extends CalcEngine {
 		return "[" + Integer.toString(pgm[programIndex].getVarCount()) + "]";
 	}
 	public String getVarString() { return "[" + Integer.toString(pgm[programIndex].getVarCount()) + "]"; }
+	public int getVarNumber() { return pgm[programIndex].getVarCount(); }
 
 	public class InputCalcAction extends NoArgCalcAction {
 		private static final long serialVersionUID = 1L;
