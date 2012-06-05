@@ -293,7 +293,7 @@ public class Operations implements Serializable{
 	};
 	
 	public BinaryOperation doNothing = new BinaryOperation() {
-		@Override public double proceed(double var1, double var2) { return var1; }  // or var2???
+		@Override public double proceed(double var1, double var2) { return var2; }  // or var1???
 		@Override public int getPrecedence() { return BinaryOperation.MAX_PRECEDENCE; } 
 		@Override public String toString() { return "doNothing"; }
 	},

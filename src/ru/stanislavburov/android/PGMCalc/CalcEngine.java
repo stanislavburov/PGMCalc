@@ -275,13 +275,14 @@ public class CalcEngine implements Serializable {
 	}
 	
 	public String addOperation(Operations.UnaryOperation oper) {
+		double dValueCopy=dValue;
 		if(flow.size()!=0 && flow.getLast().getOperation()==operations.doNothing) flow.removeLast();
 		try {
 			dValue = oper.proceed(dValue);
 		} catch(Operations.Exception ex) { setError(ex.getMessage()); return toString(); }
 		value2Strings();
 		bClearStringsFlag=true;
-		flow.add(new FlowEntry(dValue, operations.doNothing));
+		flow.add(new FlowEntry(dValueCopy, operations.doNothing));
 		return toString();
 	}
 	
@@ -385,7 +386,8 @@ public class CalcEngine implements Serializable {
 	public double fromRadian(double angle) { return curAngleUnit.fromRadian(angle); }
 	
 	public String parentheseOpen() {
-		if(!bClearStringsFlag) flow.add(new FlowEntry(dValue, operations.multiply));
+		if(flow.size()!=0 && flow.getLast().getOperation()==operations.doNothing) flow.add(new FlowEntry(dValue, operations.multiply)); 
+		if(!bClearStringsFlag && flow.size()!=0) flow.add(new FlowEntry(dValue, operations.multiply));
 		flowStack.add(flow);
 		flow = new LinkedList<FlowEntry>();
 		dValue=0;
@@ -403,14 +405,19 @@ public class CalcEngine implements Serializable {
 			value2Strings();
 			bClearStringsFlag=true;
 		}
+		flow.add(new FlowEntry(dValue, operations.doNothing));
 		return toString();
 	}
 	public int numberOfOpenedParentheses() { return flowStack.size(); }
 	
-	public String swapOperands() {
+	public String swapOperands() { // TODO account for operations.doNothing!!!
 		if(flow.size()!=0) {
 			double tmp = dValue;
 			FlowEntry lastEntry = flow.getLast();
+			while(lastEntry.getOperation()==operations.doNothing) {
+				flow.removeLast();
+				lastEntry = flow.getLast();
+			}
 			dValue = lastEntry.getValue();
 			value2Strings();
 			bClearStringsFlag = true;
