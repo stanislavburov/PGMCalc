@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+        <TextView android:text="@string/double_variable_intro" style="@style/tutorial_text" />
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/bpgm"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step01" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/bclear"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step02" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/bvariable"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step03" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/b1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step04" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/bln"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step05" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/bplus"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step06" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/bvariable"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step07" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/b2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step08" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/bxrooty"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step09" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/b4"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step10" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/bproceed"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step11" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal">
+            <include layout="@layout/bpgm"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_margin="3dp"
+		        android:layout_marginRight="5dp"
+                 />
+            <TextView android:text="@string/double_variable_step12" style="@style/tutorial_text"/>
+        </LinearLayout>
+        <include layout="@layout/dialog_divider"/>
+        
+        <TextView android:text="@string/double_variable_conclusion" style="@style/tutorial_text" />
+        
+    </LinearLayout>
+    
+
+</ScrollView>

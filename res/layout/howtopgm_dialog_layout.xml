@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical"
+	     >
+		<ImageButton android:src="@drawable/quadratic_equation"
+		    android:id="@+id/quadratic_equation"
+		    android:onClick="raiseTutorial"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/mybackground"
+		    android:layout_gravity="center"/>
+		<TextView android:text="@string/quadratic_equation_description"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:singleLine="false"
+		    android:gravity="center"
+		    />
+		<include layout="@layout/dialog_divider"/>
+		<ImageButton android:src="@drawable/double_variable"
+		    android:id="@+id/double_variable"
+		    android:onClick="raiseTutorial"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/mybackground"
+		    android:layout_gravity="center"/>
+		<TextView android:text="@string/double_variable_description"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:singleLine="false"
+		    android:gravity="center"
+		    />
+		<include layout="@layout/dialog_divider"/>
+		<ImageButton android:src="@drawable/double_function"
+		    android:id="@+id/double_function"
+		    android:onClick="raiseTutorial" 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/mybackground"
+		    android:layout_gravity="center"/>
+		<TextView android:text="@string/double_function_description"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:singleLine="false"
+		    android:gravity="center"
+		    />
+								
+	</LinearLayout>
+</ScrollView>

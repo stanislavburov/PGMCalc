@@ -262,9 +262,10 @@ public class CalcEngine implements Serializable {
 			FlowEntry curFlowEntry = flow.removeLast();
 			curFlowEntry.setOperation(oper);
 			if(flow.size()!=0 && flow.getLast().getOperation().getPrecedence()>=oper.getPrecedence()) {
-				flushFlow(); curFlowEntry.setValue(dValue);
+				flushFlow(); 
 			}
-			flow.add(curFlowEntry); //  !!! change curFlowValue to actual value
+			curFlowEntry.setValue(dValue);
+			flow.add(curFlowEntry);
 		} else {
 			if(flow.size()!=0 && flow.getLast().getOperation().getPrecedence()>=oper.getPrecedence()) flushFlow();
 			flow.add(new FlowEntry(dValue, oper));

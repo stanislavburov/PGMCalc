@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="double_function_description">Two functions depending on a single variable</string>
+    <string name="double_function_intro">This tutorial shows how to record two functions in a single program or how to show intermediate result of a program.</string>
+    <string name="double_function_step01">@string/pgm_init</string>
+    <string name="double_function_step02">@string/clear_description</string>
+    <string name="double_function_step03">Introduce variable</string>
+    <string name="double_function_step04">@string/after_variable_description</string>
+    <string name="double_function_step05">Raise variable to the second power</string>
+    <string name="double_function_step06">Save result to memory</string>
+    <string name="double_function_step07">Apply sine function</string>
+    <string name="double_function_step08">Insert halt to the program</string>
+    <string name="double_function_step09">Recall value from memory</string>
+    <string name="double_function_step10">Apply cosine function</string>
+    <string name="double_function_step11">@string/pgm_final</string>
+    <string name="double_function_conclusion">When you run this program it will stop execution at the point of HALT operation. Top line will indicate RUN HALT and the result button will change to continue button. Scren will show the intermediate result of a program. Press continue button to execute the rest part of a program. Number of halts is unlimited.</string>
+    
+</resources>

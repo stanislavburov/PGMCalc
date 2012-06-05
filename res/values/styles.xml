@@ -8,7 +8,7 @@
     
     <style name="managerbutton">
 	    <item name="android:layout_height">wrap_content</item>
-	    <item name="android:layout_width">0dip</item>
+	    <item name="android:layout_width">0dip</item> 
 	    <item name="android:layout_weight">1</item>
 	    <item name="android:background">@drawable/managerbuttonbackground</item>
 	    <item name="android:textSize">15sp</item>
@@ -44,6 +44,14 @@
 	    <item name="android:textSize">30sp</item>
 	    <item name="android:background">@drawable/dialogbackground</item>
 	    <item name="android:singleLine">true</item>	    
+	</style>
+	
+	<style name="tutorial_text">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:gravity">fill</item>
+	    <item name="android:layout_marginLeft">3dp</item>
+	    <item name="android:layout_marginRight">3dp</item>
 	</style>
 	
 </resources>

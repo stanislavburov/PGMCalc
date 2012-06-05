@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Button xmlns:android="http://schemas.android.com/apk/res/android"
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/bclear"
             android:onClick="bClearClick"
-            style="@style/regularbutton"
-            android:text="C" />
+            style="@style/regularimagebutton"
+            android:src="@drawable/clear"
+             />

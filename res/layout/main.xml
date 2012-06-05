@@ -4,20 +4,24 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <HorizontalScrollView 
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">"
-        
-        <TextView android:id="@+id/angleunit" style="@style/notificationarea" />
-        <LinearLayout android:id="@+id/memoryline" android:orientation="horizontal" style="@style/notificationarea" />
-        <TextView android:id="@+id/parentheses" style="@style/notificationarea" />
-        <TextView android:id="@+id/fix" style="@style/notificationarea" />
-        <TextView android:id="@+id/scieng" style="@style/notificationarea" />
-        <TextView android:id="@+id/pgmrun" style="@style/notificationarea" /> 
-        
-    </LinearLayout>
-    
+        android:layout_height="wrap_content">
+	    <LinearLayout
+	        android:orientation="horizontal"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content">
+	        
+	        <TextView android:id="@+id/angleunit" style="@style/notificationarea" />
+	        <LinearLayout android:id="@+id/memoryline" android:orientation="horizontal" style="@style/notificationarea" />
+	        <TextView android:id="@+id/parentheses" style="@style/notificationarea" />
+	        <TextView android:id="@+id/fix" style="@style/notificationarea" />
+	        <TextView android:id="@+id/scieng" style="@style/notificationarea" />
+	        <TextView android:id="@+id/pgmrun" style="@style/notificationarea" /> 
+	        
+	    </LinearLayout>
+	</HorizontalScrollView>
+	
     <TextView
         android:id="@+id/simplescreen"
         android:layout_width="fill_parent"
@@ -27,8 +31,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="30sp"
         android:singleLine="true"
-        android:gravity="right" />
-
+        android:gravity="right"
+        android:layout_gravity="right" />
+	
     <LinearLayout
         android:id="@+id/managerbuttons"
         android:layout_width="fill_parent"
