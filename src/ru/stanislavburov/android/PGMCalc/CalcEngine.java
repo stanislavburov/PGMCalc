@@ -267,7 +267,7 @@ public class CalcEngine implements Serializable {
 			curFlowEntry.setValue(dValue);
 			flow.add(curFlowEntry);
 		} else {
-			if(flow.size()!=0 && flow.getLast().getOperation().getPrecedence()>=oper.getPrecedence()) flushFlow();
+			if(flow.size()!=0 && flow.getLast().getOperation().getPrecedence()>oper.getPrecedence()) flushFlow(); // WHY here was >= condition???
 			flow.add(new FlowEntry(dValue, oper));
 		}
 		bClearStringsFlag=true;
