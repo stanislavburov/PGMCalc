@@ -18,5 +18,6 @@ STO button stores value to memory. RCL button serves to recall saved value from 
     <string name="pgm_final">Exit from PGM mode. PGM indication will disappear from top line.</string>
     <string name="clear_description">Clear calculator state to prevent it from influence on a program result</string>
     <string name="after_variable_description">Just after [x] you can provide some dummy value to succeed in recording program. At runtime this dummy value will be substituted with user-supplied value or expression.</string>
+    <string name="swith_back_from_misc">Switch back from \'misc\' to \'num\'</string>    
 
 </resources>

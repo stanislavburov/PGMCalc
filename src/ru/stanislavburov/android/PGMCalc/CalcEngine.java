@@ -410,11 +410,11 @@ public class CalcEngine implements Serializable {
 	}
 	public int numberOfOpenedParentheses() { return flowStack.size(); }
 	
-	public String swapOperands() { // TODO account for operations.doNothing!!!
+	public String swapOperands() {
 		if(flow.size()!=0) {
 			double tmp = dValue;
 			FlowEntry lastEntry = flow.getLast();
-			while(lastEntry.getOperation()==operations.doNothing) {
+			while(lastEntry.getOperation()==operations.doNothing && flow.size()!=1) {
 				flow.removeLast();
 				lastEntry = flow.getLast();
 			}

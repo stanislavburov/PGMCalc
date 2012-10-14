@@ -7,4 +7,8 @@
         android:title="@string/howtopgm"
         android:icon="@android:drawable/ic_menu_info_details" 
         />
+    <item android:id="@+id/misc_switcher"
+        android:title="@string/swith_back_from_misc"
+        android:icon="@android:drawable/button_onoff_indicator_on"
+        />
 </menu>

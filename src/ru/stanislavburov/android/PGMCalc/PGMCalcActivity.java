@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 
 import ru.stanislavburov.android.PGMCalc.Operations.BinaryOperation;
 import ru.stanislavburov.android.PGMCalc.PGMEngine.PGMEngineState;
+import android.R.bool;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -20,8 +21,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
@@ -60,6 +67,7 @@ public class PGMCalcActivity extends Activity {
 		public void onClick(DialogInterface dialog, int unused) { /*resetManagerButton();*/ }
 	};
 	private AlertDialog fixDialog = null;
+	private boolean switchBackFromMisc = true;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) { // TODO unit testing, help on long press, copy screen content to clipboard
@@ -77,12 +85,6 @@ public class PGMCalcActivity extends Activity {
         });
         managerButtons = (ViewGroup)findViewById(R.id.managerbuttons);
         operationalButtons = (ViewAnimator)findViewById(R.id.operationalbuttons);
-//        Resources res = this.getResources();
-//        animationDuration = res.getInteger(R.integer.animationduration);
-//        operationalButtons.setInAnimation(AnimationUtils.makeInAnimation(this, true));
-//        operationalButtons.setOutAnimation(AnimationUtils.makeOutAnimation(this, true));
-//        operationalButtons.getInAnimation().setDuration(animationDuration);
-//        operationalButtons.getOutAnimation().setDuration(animationDuration);
         angleUnit = (TextView)findViewById(R.id.angleunit);
         parentheses = (TextView)findViewById(R.id.parentheses);
         memMax=CalcEngine.MEM_MAX;
@@ -121,6 +123,7 @@ public class PGMCalcActivity extends Activity {
    		try {
    			ObjectOutputStream out = new ObjectOutputStream(openFileOutput(engineFileName, MODE_PRIVATE));
    			out.writeObject(engine);
+   			out.writeBoolean(switchBackFromMisc);
    			out.close();
 		} catch (FileNotFoundException ex) {
 			Toast.makeText(this, ex.toString(), Toast.LENGTH_LONG).show();
@@ -134,6 +137,11 @@ public class PGMCalcActivity extends Activity {
     	try {
     		ObjectInputStream in = new ObjectInputStream(openFileInput(engineFileName));
     		engine = (PGMEngine)in.readObject();
+    		try {
+    			switchBackFromMisc = in.readBoolean();
+    		} catch (Exception e) {
+				switchBackFromMisc = true;
+			}
 		} catch (FileNotFoundException e) {
 			engine = new PGMEngine();
 		} catch(IOException ex) {
@@ -156,8 +164,18 @@ public class PGMCalcActivity extends Activity {
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
     	super.onCreateOptionsMenu(menu);
     	getMenuInflater().inflate(R.menu.options, menu);
+    	setMiscSwitcherIcon(menu.findItem(R.id.misc_switcher));
     	return true;
     }
+    
+//    @Override
+//    public boolean onPrepareOptionsMenu (Menu menu) {
+//    	super.onPrepareOptionsMenu(menu);
+//    	MenuItem miscSwitcher = menu.findItem(R.id.misc_switcher);
+//    	if(miscSwitcher.isChecked()) miscSwitcher.setIcon(iconRes);
+//    	else 
+//    	return true;
+//    }
     
     @Override 
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
@@ -167,6 +185,10 @@ public class PGMCalcActivity extends Activity {
     		showDialog(DIALOG_HELP_ID); break;
     	case R.id.howtopgm:
     		showDialog(DIALOG_HOWTOPGM_ID); break;
+    	case R.id.misc_switcher:
+    		switchBackFromMisc = !switchBackFromMisc;
+    		setMiscSwitcherIcon(item);
+    		break;
     	default: break;
     	}
     	return true;
@@ -342,7 +364,7 @@ public class PGMCalcActivity extends Activity {
     	dialogContent[0] = "not fixed";
     	for(int i=1; i<fixMax; i++) dialogContent[i]=Integer.toString(i-1);
     	DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) { setScreen(engine.add(engine.setFIX[which]), true); }
+			public void onClick(DialogInterface dialog, int which) { setScreen(engine.add(engine.setFIX[which]), switchBackFromMisc); }
 		};
     	fixDialog = new AlertDialog.Builder(this)
     	.setTitle("Set number of decimal places")
@@ -350,6 +372,11 @@ public class PGMCalcActivity extends Activity {
     	.setNegativeButton("cancel", dialogCancelListener)
     	.setAdapter(new ArrayAdapter<String>(this, R.layout.fixdialogrow, R.id.simpletextview, dialogContent), listener)
     	.create();
+    }
+    
+    private void setMiscSwitcherIcon(MenuItem item) {
+		if(switchBackFromMisc) item.setIcon(android.R.drawable.button_onoff_indicator_on);
+		else item.setIcon(android.R.drawable.button_onoff_indicator_off);
     }
 
     public void b0Click(View v) { setScreen(engine.add('0'), false); }
@@ -423,9 +450,9 @@ public class PGMCalcActivity extends Activity {
     public void bModulusClick(View v) { setScreen(engine.add(engine.operations.modulus), true); }
     public void bRoundXClick(View v) { setScreen(engine.add(engine.operations.roundx), true); }
     public void bGammaClick(View v) { setScreen(engine.add(engine.operations.gamma), true); }
-    public void bRandClick(View v) { setScreen(engine.add(engine.operations.rand), true); }
-    public void bParentheseOpenClick(View v) { setScreen(engine.add(engine.parentheseOpen), true); }
-    public void bParentheseCloseClick(View v) { setScreen(engine.add(engine.parentheseClose), true); }
+    public void bRandClick(View v) { setScreen(engine.add(engine.operations.rand), switchBackFromMisc); }
+    public void bParentheseOpenClick(View v) { setScreen(engine.add(engine.parentheseOpen), switchBackFromMisc); }
+    public void bParentheseCloseClick(View v) { setScreen(engine.add(engine.parentheseClose), switchBackFromMisc); }
     public void bSwapOperandsClick(View v) { setScreen(engine.add(engine.swapOperands), true); }
     public void bSTOMClick(View v) { setScreen(engine.add(engine.STOM), true); }
     public void bCRLMClick(View v) { setScreen(engine.add(engine.RCLM), true); }
@@ -433,14 +460,14 @@ public class PGMCalcActivity extends Activity {
     public void bSTOClick(View v) {
     	showMemoryDialog("Choose cell to store", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				setScreen(engine.add(engine.STO[which]), true);
+				setScreen(engine.add(engine.STO[which]), switchBackFromMisc);
 			}
     	});
     }
     public void bRCLClick(View v) {
     	showMemoryDialog("Choose value to recall", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				setScreen(engine.add(engine.RCL[which]), true);
+				setScreen(engine.add(engine.RCL[which]), switchBackFromMisc);
 			}
     	});
     }
@@ -450,7 +477,7 @@ public class PGMCalcActivity extends Activity {
     	if(engine.getState()!=PGMEngine.PGMEngineState.RECORD)
 	    	showPGMDialog("Choose slot to record", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					setScreen(engine.startRecord(which), true);
+					setScreen(engine.startRecord(which), switchBackFromMisc);
 				}
 			});
     	else setScreen(engine.stopRecord(), true);   
@@ -458,13 +485,13 @@ public class PGMCalcActivity extends Activity {
     public void bRUNClick(View v) {
 	    	showPGMDialog("Choose program to play", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					setScreen(engine.runPGM(which), true);
+					setScreen(engine.runPGM(which), switchBackFromMisc);
 				}
 			});
     }
-    public void bHALTClick(View v) { if(engine.getState()==PGMEngineState.RECORD) setScreen(engine.add(engine.halt), true); }
-    public void bVariableClick(View v) { if(engine.getState()==PGMEngineState.RECORD) setScreen(engine.PGMVariable(), true); }
-    public void bPercentClick(View v) { setScreen(engine.add(engine.percent), true); }
+    public void bHALTClick(View v) { if(engine.getState()==PGMEngineState.RECORD) setScreen(engine.add(engine.halt), switchBackFromMisc); }
+    public void bVariableClick(View v) { if(engine.getState()==PGMEngineState.RECORD) setScreen(engine.PGMVariable(), switchBackFromMisc); }
+    public void bPercentClick(View v) { setScreen(engine.add(engine.percent), switchBackFromMisc); }
     public void memClearButtonClick(View v) {
     	Toast.makeText(this, "!!!", Toast.LENGTH_SHORT).show();
     }
